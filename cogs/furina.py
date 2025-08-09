@@ -1,11 +1,9 @@
 # cogs/furina.py
 from discord.ext import commands
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
+from config import OPENAI_API_KEY
 from openai import OpenAI
-
-load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 client_openai = OpenAI(api_key=OPENAI_API_KEY)
 
