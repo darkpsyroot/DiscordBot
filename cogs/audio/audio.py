@@ -12,14 +12,19 @@ class Audio(commands.Cog):
     async def audio(self, ctx):
         await ctx.send("Usa un subcomando, por ejemplo !audio grito")
 
-    @audio.command(name=COMMANDS["grito1"])
-    async def grito1(self, ctx):
+    @audio.command(name=COMMANDS["audio1"])
+    async def audio1(self, ctx):
         audio_path = "assets/audio/gritoescoffier.mp3"
         await self.audio_service.enviar_audio(ctx, audio_path)
 
-    @audio.command(name=COMMANDS["grito2"])
-    async def grito2(self, ctx):
+    @audio.command(name=COMMANDS["audio2"])
+    async def audio2(self, ctx):
         audio_path = "assets/audio/navia_fire.mp3"
+        await self.audio_service.enviar_audio(ctx, audio_path)
+
+    @audio.command(name=COMMANDS["audio3"])
+    async def audio3(self, ctx):
+        audio_path = "assets/audio/FurinaSama.mp3"
         await self.audio_service.enviar_audio(ctx, audio_path)
 
 async def setup(bot):
