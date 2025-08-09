@@ -1,0 +1,19 @@
+COMMANDS = {
+    "info": "info",
+    "ping": "ping",
+    "zhongli_zh1": "zh1",
+    "zhongli_zh2": "zh2",
+    "zhongli_zh3": "zh3",
+    "zhongli_zh4": "zh4",
+    "zhongli_zh5": "zh5",
+    "grito1": "grito",
+    "grito2": "navia",
+    "video1": "bestteam",
+    "video2": "hapapa",
+    "video3": "alipeligro",
+    "video4": "coca",
+    "video5": "face",
+    "video6": "furitao",
+    "video7": "lesbiatan",
+    "video8": "mavuikamylove"
+}

@@ -1,0 +1,19 @@
+# 🔹 Ignorar entorno virtual
+venv/
+.env
+
+# 🔹 Archivos compilados de Python
+__pycache__/
+*.py[cod]
+
+# 🔹 Archivos del sistema macOS
+*.log
+#*.sqlite3
+#*.db
+#*.swp
+#*.swo
+.DS_Store
+
+# 🔹 Otros
+.idea/
+.vscode/
