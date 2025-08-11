@@ -16,5 +16,6 @@ COMMANDS = {
     "video5": "face",
     "video6": "furitao",
     "video7": "lesbiatan",
-    "video8": "mavuikamylove"
+    "video8": "mavuikamylove",
+    "video9": "burnice"
 }

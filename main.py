@@ -6,6 +6,7 @@ from config import DISCORD_TOKEN, COMMAND_PREFIX, GUILD_ID
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 
 bot = commands.Bot(command_prefix=COMMAND_PREFIX, help_command=None, intents=intents)
 

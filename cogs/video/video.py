@@ -50,6 +50,11 @@ class Video(commands.Cog):
     async def video8(self, ctx):
         video_path = "assets/video/MavuikaMyLove.mp4"
         await self.video_service.enviar_video(ctx, video_path)
+    
+    @video.command(name=COMMANDS["video9"])
+    async def video9(self, ctx):
+        video_path = "assets/video/Burnice.mp4"
+        await self.video_service.enviar_video(ctx, video_path)
 
 async def setup(bot):
     await bot.add_cog(Video(bot))
