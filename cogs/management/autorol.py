@@ -11,10 +11,17 @@ class AutoRol(commands.Cog):
         role = discord.utils.get(member.guild.roles, name=role_name)
 
         if role:
-            await member.add_roles(role)
-            print(f"✅ Rol '{role_name}' asignado a {member.name}")
+            try:
+                await member.add_roles(role)
+                print(f"✅ Rol '{role_name}' asignado a {member.name}")
+            except Exception as e:
+                print(f"⚠️ Error asignando rol '{role_name}' a {member.name}: {e}")
         else:
             print(f"⚠️ No se encontró el rol '{role_name}'")
+
+    @commands.Cog.listener()
+    async def on_member_remove(self, member):
+        print(f"⚠️ Miembro {member} salió o fue expulsado.")
 
 async def setup(bot):
     await bot.add_cog(AutoRol(bot))
