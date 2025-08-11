@@ -53,8 +53,8 @@ class Video(commands.Cog):
     
     @video.command(name=COMMANDS["video9"])
     async def video9(self, ctx):
-        video_path = "assets/video/Burnice.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
+        youtube_url = "https://www.youtube.com/watch?v=gh6gtpH4EbQ&list=RDgh6gtpH4EbQ&start_radio=1&ab_channel=Stormz67"
+        await self.video_service.enviar_enlace(ctx, youtube_url)
 
 async def setup(bot):
     await bot.add_cog(Video(bot))
