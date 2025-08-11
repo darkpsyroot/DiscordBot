@@ -18,6 +18,7 @@ COMMANDS = {
     "video7": "lesbiatan",
     "video8": "mavuikamylove",
     "video9": "burnice",
+    "video10": "cancer",
     "furina_sleep": "duerme",
     "furina_wake": "despierta"
 }

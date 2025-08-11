@@ -55,6 +55,11 @@ class Video(commands.Cog):
     async def video9(self, ctx):
         youtube_url = "https://www.youtube.com/watch?v=gh6gtpH4EbQ&list=RDgh6gtpH4EbQ&start_radio=1&ab_channel=Stormz67"
         await self.video_service.enviar_enlace(ctx, youtube_url)
+    
+    @video.command(name=COMMANDS["video10"])
+    async def video10(self, ctx):
+        video_path = "assets/video/Cancer.mp4"
+        await self.video_service.enviar_video(ctx, video_path)
 
 async def setup(bot):
     await bot.add_cog(Video(bot))
