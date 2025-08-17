@@ -5,8 +5,10 @@ import os
 from config import OPENAI_API_KEY
 from openai import OpenAI
 from comandos import COMMANDS
+from services.youtube_service import YouTubeService  # 👈 importación nueva
 
 client_openai = OpenAI(api_key=OPENAI_API_KEY)
+youtube_service = YouTubeService()  # 👈 instancia global
 
 class Furina(commands.Cog):
     def __init__(self, bot):
@@ -41,6 +43,24 @@ class Furina(commands.Cog):
                 await ctx.send("Buenassss.")
             else:
                 await ctx.send("Solo Liserk puede despertarme.")
+            return
+
+        # --- YouTube ---
+        if argumento_lower.startswith("youtube"):
+            query = argumento[7:].strip()
+            if not query:
+                await ctx.send("❌ Uso: `!furina youtube nombre_del_video`")
+                return
+
+            try:
+                results = youtube_service.search_video(query, max_results=1)
+                if results:
+                    video = results[0]
+                    await ctx.send(f"📺 **{video['title']}**\n🔗 {video['url']}")
+                else:
+                    await ctx.send("❌ No encontré ningún video.")
+            except Exception as e:
+                await ctx.send(f"⚠️ Error al buscar en YouTube: {e}")
             return
 
         # Si no es un comando especial, y Furina está dormida, no responde

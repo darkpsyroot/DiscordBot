@@ -20,5 +20,8 @@ COMMANDS = {
     "video9": "burnice",
     "video10": "cancer",
     "furina_sleep": "duerme",
-    "furina_wake": "despierta"
+    "furina_wake": "despierta",
+    "shutdown_bot": "apagar",
+    "startup_bot": "encender",
+    "comandos_lista": "lista"
 }

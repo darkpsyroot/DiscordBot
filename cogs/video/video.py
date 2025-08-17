@@ -2,64 +2,64 @@ from discord.ext import commands
 from services.video_service import VideoService
 from comandos import COMMANDS
 
-class Video(commands.Cog):
+
+class Video (commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.video_service = VideoService()
 
-    @commands.group(name="video", invoke_without_command=True)
-    async def video(self, ctx):
-        await ctx.send("Usa un subcomando, por ejemplo !video bestteam")
+        # Diccionario que mapea subcomando -> función
+        self.video_commands = {
+            COMMANDS["video1"]: self.video1,
+            COMMANDS["video2"]: self.video2,
+            COMMANDS["video3"]: self.video3,
+            COMMANDS["video4"]: self.video4,
+            COMMANDS["video5"]: self.video5,
+            COMMANDS["video6"]: self.video6,
+            COMMANDS["video7"]: self.video7,
+            COMMANDS["video8"]: self.video8,
+            COMMANDS["video9"]: self.video9,
+            COMMANDS["video10"]: self.video10,
+        }
 
-    @video.command(name=COMMANDS["video1"])
+    async def handle(self, ctx, subcommand):
+        func = self.video_commands.get(subcommand.lower())
+        if func:
+            await func(ctx)
+        else:
+            await ctx.send(f"❌ Subcomando de video desconocido: `{subcommand}`")
+
+    # Métodos individuales de cada video
     async def video1(self, ctx):
-        video_path = "assets/video/BestTeam.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
-    
-    @video.command(name=COMMANDS["video2"])
+        await self.video_service.enviar_video(ctx, "assets/video/BestTeam.mp4")
+
     async def video2(self, ctx):
-        video_path = "assets/video/Hapapa.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
-    
-    @video.command(name=COMMANDS["video3"])
+        await self.video_service.enviar_video(ctx, "assets/video/Hapapa.mp4")
+
     async def video3(self, ctx):
-        video_path = "assets/video/AliRun.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
+        await self.video_service.enviar_video(ctx, "assets/video/AliRun.mp4")
 
-    @video.command(name=COMMANDS["video4"])
     async def video4(self, ctx):
-        video_path = "assets/video/RicaCola.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
+        await self.video_service.enviar_video(ctx, "assets/video/RicaCola.mp4")
 
-    @video.command(name=COMMANDS["video5"])
     async def video5(self, ctx):
-        video_path = "assets/video/Face.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
+        await self.video_service.enviar_video(ctx, "assets/video/Face.mp4")
 
-    @video.command(name=COMMANDS["video6"])
     async def video6(self, ctx):
-        video_path = "assets/video/FuriTao.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
+        await self.video_service.enviar_video(ctx, "assets/video/FuriTao.mp4")
 
-    @video.command(name=COMMANDS["video7"])
     async def video7(self, ctx):
-        video_path = "assets/video/lesbiandowsky.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
-    
-    @video.command(name=COMMANDS["video8"])
+        await self.video_service.enviar_video(ctx, "assets/video/lesbiandowsky.mp4")
+
     async def video8(self, ctx):
-        video_path = "assets/video/MavuikaMyLove.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
-    
-    @video.command(name=COMMANDS["video9"])
+        await self.video_service.enviar_video(ctx, "assets/video/MavuikaMyLove.mp4")
+
     async def video9(self, ctx):
-        youtube_url = "https://www.youtube.com/watch?v=gh6gtpH4EbQ&list=RDgh6gtpH4EbQ&start_radio=1&ab_channel=Stormz67"
-        await self.video_service.enviar_enlace(ctx, youtube_url)
-    
-    @video.command(name=COMMANDS["video10"])
+        await self.video_service.enviar_enlace(ctx, "https://www.youtube.com/watch?v=gh6gtpH4EbQ&list=RDgh6gtpH4EbQ&start_radio=1&ab_channel=Stormz67")
+
     async def video10(self, ctx):
-        video_path = "assets/video/Cancer.mp4"
-        await self.video_service.enviar_video(ctx, video_path)
+        await self.video_service.enviar_video(ctx, "assets/video/Cancer.mp4")
 
 async def setup(bot):
     await bot.add_cog(Video(bot))
+

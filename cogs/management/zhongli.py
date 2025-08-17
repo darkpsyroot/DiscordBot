@@ -2,13 +2,15 @@ import discord
 from discord.ext import commands
 from .permisos_handler import PermisosHandler
 from services.subcommands_service import SubcommandsService
+from services.openai_service import OpenAIService  # Importamos para pasar al servicio
 
 class Zhongli(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.allowed_roles = {"Arconte", "ZhongliSimp"}
         self.permisos_handler = PermisosHandler(bot)
-        self.subcommands_service = SubcommandsService(self)
+        self.openai_service = OpenAIService()  # se puede compartir o usar None si no aplica
+        self.subcommands_service = SubcommandsService(self, self.openai_service)
 
     def has_permission(self, member):
         return any(role.name in self.allowed_roles for role in member.roles)
@@ -17,8 +19,8 @@ class Zhongli(commands.Cog):
         mavuika = self.bot.get_cog("Mavuika")
         return mavuika.zhongli_enabled if mavuika else True
 
-    @commands.command()
-    async def zhongli(self, ctx, subcommand=None, *args):
+    @commands.command(name="zhongli")
+    async def zhongli_command(self, ctx, subcommand=None, *args):
         if not self.has_permission(ctx.author):
             await ctx.send("❌ No tienes permiso para usar este comando.")
             return
@@ -27,14 +29,19 @@ class Zhongli(commands.Cog):
             await ctx.send("⚠️ El comando `zhongli` está deshabilitado actualmente.")
             return
 
-        if subcommand is None:
-            await ctx.send("⚠️ Uso correcto: `!zhongli permisos [dar/quitar] 'nombre_del_rol' @usuario` o `!zhongli ping`")
+        if not subcommand:
+            await ctx.send(
+                "⚠️ Uso correcto: `!zhongli <subcomando> [args]`, "
+                "por ejemplo `!zhongli permisos [dar/quitar] 'rol' @usuario` o `!zhongli ping`"
+            )
             return
 
+        # Todo lo demás lo maneja SubcommandsService con manejo de errores
         try:
             await self.subcommands_service.handle(ctx, subcommand, *args)
         except Exception as e:
-            await ctx.send(f"⚠️ Error inesperado al procesar el comando: {e}")
+            print(f"⚠️ Error inesperado en Zhongli command: {e}")
+            await ctx.send("⚠️ Ocurrió un error inesperado al procesar el comando.")
 
 async def setup(bot):
     await bot.add_cog(Zhongli(bot))
