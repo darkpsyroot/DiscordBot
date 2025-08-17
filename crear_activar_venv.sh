@@ -1,5 +1,5 @@
 #!/bin/bash
-#./crear_activar_venv.sh
+#source crear_activar_venv.sh
 
 # Crear entorno virtual llamado 'venv'
 python3 -m venv venv
