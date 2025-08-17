@@ -25,11 +25,11 @@ class SubcommandsService:
             "ping": self.handle_ping,
             "expulsar": self.handle_expulsar,
             "banear": self.handle_banear,
-            "openai": self.handle_openai,
+            "gpt": self.handle_openai,
             "video": self.handle_video,
             "audio": self.handle_audio,
             "youtube": self.handle_youtube,
-            "comandos": self.handle_comandos,  # <-- Nuevo subcomando
+            "lista": self.handle_comandos,  # <-- Nuevo subcomando
         }
 
     # ------------------ Helpers ------------------
@@ -73,7 +73,7 @@ class SubcommandsService:
     # ---------------- Comandos Handler ----------------
     async def handle_comandos(self, ctx, *args):
         async def inner(ctx, *args):
-            if not args or args[0].lower() != "lista":
+            if not args or args[0].lower() != "comandos":
                 await ctx.send(f"❌ Subcomando desconocido: `{args[0]}`" if args else "❌ Uso: `!<comando> comandos lista`")
                 return
 

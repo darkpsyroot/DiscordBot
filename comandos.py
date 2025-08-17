@@ -19,9 +19,9 @@ COMMANDS = {
     "video8": "mavuikamylove",
     "video9": "burnice",
     "video10": "cancer",
-    "furina_sleep": "duerme",
-    "furina_wake": "despierta",
-    "shutdown_bot": "apagar",
-    "startup_bot": "encender",
-    "comandos_lista": "lista"
+    "furina_sleep": "off",
+    "furina_wake": "on",
+    "shutdown_bot": "offcommands",
+    "startup_bot": "oncommands",
+    "comandos_lista": "comandos"
 }
