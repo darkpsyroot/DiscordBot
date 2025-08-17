@@ -123,7 +123,7 @@ class SubcommandsService:
             return
 
         question = " ".join(args)
-        await ctx.send("🤔 Pensando...")
+        #await ctx.send("🤔 Pensando...")
         try:
             answer = await self.openai_service.ask(question)
             await ctx.send(f"💡 {answer}")
