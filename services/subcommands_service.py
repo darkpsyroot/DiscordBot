@@ -5,6 +5,7 @@ from services.youtube_service import YouTubeService
 from services.error_handler import ErrorHandler
 from cogs.video.video import Video
 from cogs.audio.audio import Audio
+from cogs.horarios import HorariosHelper 
 from cogs.comandos.commands_renderer import CommandsRenderer
 #from services.commands_service import CommandsService
 from comandos import COMMANDS
@@ -15,6 +16,7 @@ class SubcommandsService:
         self.openai_service = openai_service
         self.video_cog = Video(cog.bot)
         self.audio_cog = Audio(cog.bot)
+        #self.horarios_cog = HorariosHelper(cog.bot)
         self.youtube_service = YouTubeService()
         #self.commands_service = CommandsService(cog.bot)
         self.error_handler = ErrorHandler(prefix="⚠️ Ocurrió un error")
@@ -29,7 +31,8 @@ class SubcommandsService:
             "video": self.handle_video,
             "audio": self.handle_audio,
             "youtube": self.handle_youtube,
-            "lista": self.handle_comandos,  # <-- Nuevo subcomando
+            "lista": self.handle_comandos,
+            COMMANDS["horarios"]: self.handle_horarios
         }
 
     # ------------------ Helpers ------------------
@@ -69,7 +72,22 @@ class SubcommandsService:
 
         subcommand2 = args[0]
         await self.error_handler.wrap(self.audio_cog.handle, ctx, subcommand2)
-    
+
+    # ---------------- Horarios Handler ----------------
+    async def handle_horarios(self, ctx, *args):
+        async def inner(ctx, *args):
+            # Obtenemos el cog Horarios
+            horarios_cog = self.cog.bot.get_cog("Horarios")
+            if not horarios_cog:
+                await ctx.send("⚠️ El cog de horarios no está cargado.")
+                return
+
+            # Llamamos directamente al comando de Horarios
+            await horarios_cog.horarios(ctx)
+
+        # Usamos ErrorHandler para capturar errores
+        await self.error_handler.wrap(inner, ctx, *args)
+
     # ---------------- Comandos Handler ----------------
     async def handle_comandos(self, ctx, *args):
         async def inner(ctx, *args):

@@ -4,6 +4,7 @@ from openai import AsyncOpenAI
 class OpenAIService:
     def __init__(self):
         self.client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.activa = True
 
     async def ask(self, question: str) -> str:
         """Envía la pregunta a OpenAI y devuelve la respuesta."""
