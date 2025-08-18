@@ -23,5 +23,6 @@ COMMANDS = {
     "furina_wake": "on",
     "shutdown_bot": "offcommands",
     "startup_bot": "oncommands",
-    "comandos_lista": "comandos"
+    "comandos_lista": "comandos",
+    "horarios": "horarios"
 }
