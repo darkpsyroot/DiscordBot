@@ -19,6 +19,7 @@ COMMANDS = {
     "video8": "mavuikamylove",
     "video9": "burnice",
     "video10": "cancer",
+    "video11": "pollito",
     "furina_sleep": "off",
     "furina_wake": "on",
     "shutdown_bot": "offcommands",

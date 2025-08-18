@@ -20,6 +20,7 @@ class Video (commands.Cog):
             COMMANDS["video8"]: self.video8,
             COMMANDS["video9"]: self.video9,
             COMMANDS["video10"]: self.video10,
+            COMMANDS["video11"]: self.video11,
         }
 
     async def handle(self, ctx, subcommand):
@@ -59,6 +60,9 @@ class Video (commands.Cog):
 
     async def video10(self, ctx):
         await self.video_service.enviar_video(ctx, "assets/video/Cancer.mp4")
+
+    async def video11(self, ctx):
+        await self.video_service.enviar_video(ctx, "assets/video/PollitoConPapas.mp4")
 
 async def setup(bot):
     await bot.add_cog(Video(bot))
