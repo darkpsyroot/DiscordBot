@@ -11,7 +11,7 @@ class HorariosHelper(commands.Cog):
             "🇦🇷 Argentina": "America/Argentina/Buenos_Aires",
             "🇧🇷 Brasil": "America/Sao_Paulo",
             "🇲🇽 México": "America/Mexico_City",
-            "🇳🇮 Nicaragua": "America/Managua",
+            #"🇳🇮 Nicaragua": "America/Managua",
             "🇪🇸 España": "Europe/Madrid"
         }
 
@@ -45,7 +45,7 @@ class Horarios(commands.Cog):
             await ctx.send(embed=embed)
 
         except Exception as e:
-            await ctx.send(f"⚠️ Error en `!horarios`: {e}")
+            await ctx.send(f"⚠️ Error en `horarios`: {e}")
 
 async def setup(bot):
     await bot.add_cog(Horarios(bot))
