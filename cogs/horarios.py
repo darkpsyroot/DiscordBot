@@ -12,7 +12,8 @@ class HorariosHelper(commands.Cog):
             "🇧🇷 Brasil": "America/Sao_Paulo",
             "🇲🇽 México": "America/Mexico_City",
             #"🇳🇮 Nicaragua": "America/Managua",
-            "🇪🇸 España": "Europe/Madrid"
+            "🇪🇸 España": "Europe/Madrid",
+            "🇨🇴 Colombia": "America/Bogota"
         }
 
         # Orden alfabético
