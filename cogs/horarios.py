@@ -10,8 +10,8 @@ class HorariosHelper(commands.Cog):
         zonas = {
             "🇦🇷 Argentina": "America/Argentina/Buenos_Aires",
             "🇧🇷 Brasil": "America/Sao_Paulo",
-            "🇲🇽 México (CDMX - UTC-6)": "America/Mexico_City",
-            "🇲🇽 México (México - UTC-7)": "America/Hermosillo",
+            "🇲🇽 México (UTC-6)": "America/Mexico_City",
+            "🇲🇽 México (UTC-7)": "America/Hermosillo",
             "🇵🇪 Perú (UTC-5)": "America/Lima",
             "🇪🇸 España (UTC+1)": "Europe/Madrid",
             "🇨🇴 Colombia (UTC-5)": "America/Bogota"
