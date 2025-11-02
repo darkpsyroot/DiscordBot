@@ -92,13 +92,12 @@ class SubcommandsService:
         await self.error_handler.wrap(inner, ctx, *args)
     
     # ---------------- Temperatura Handler ----------------
-        
     async def handle_temperatura(self, ctx, *args):
         async def inner(ctx, *args):
             ciudades = {
                 "🇦🇷 Argentina - Buenos Aires": (-34.61, -58.38),
                 "🇧🇷 Brasil - São Paulo": (-23.55, -46.63),
-                "🇪🇸 España - Huelva": (37.27, -6.94),
+                "🇪🇸 España - Huelva": (37.27, -6.94),   
                 "🇲🇽 México - CDMX": (19.43, -99.13),
                 "🇲🇽 México - Sinaloa": (24.80, -107.39)
             }
@@ -112,13 +111,15 @@ class SubcommandsService:
                         async with session.get(url, params={
                             "latitude": lat,
                             "longitude": lon,
-                            "current_weather": "true"  # 🔥 CORREGIDO: string, no boolean
+                            "current_weather": "true",  # string, no boolean
+                            "timezone": "auto",         # zona horaria automática
+                            "models": "icon"            # modelo más preciso para ciudades
                         }) as resp:
                             if resp.status == 200:
                                 data = await resp.json()
                                 weather = data.get("current_weather")
                                 if weather and "temperature" in weather:
-                                    temp = weather["temperature"]
+                                    temp = round(weather["temperature"], 1)  # 🔥 redondeamos a 1 decimal
                                     resultados.append(f"{nombre}: **{temp}°C** 🌡️")
                                 else:
                                     resultados.append(f"{nombre}: ⚠️ Sin datos de temperatura")
@@ -136,6 +137,7 @@ class SubcommandsService:
             await ctx.send(embed=embed)
 
         await self.error_handler.wrap(inner, ctx, *args)
+
     # ---------------- Comandos Handler ----------------
     async def handle_comandos(self, ctx, *args):
         async def inner(ctx, *args):
