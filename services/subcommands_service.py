@@ -112,8 +112,7 @@ class SubcommandsService:
                             "latitude": lat,
                             "longitude": lon,
                             "current_weather": "true",  # string, no boolean
-                            "timezone": "auto",         # zona horaria automática
-                            "models": "icon"            # modelo más preciso para ciudades
+                            "timezone": "auto"         # zona horaria automática
                         }) as resp:
                             if resp.status == 200:
                                 data = await resp.json()
