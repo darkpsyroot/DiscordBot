@@ -25,5 +25,6 @@ COMMANDS = {
     "shutdown_bot": "offcommands",
     "startup_bot": "oncommands",
     "comandos_lista": "comandos",
-    "horarios": "horarios"
+    "horarios": "horarios",
+    "temperatura": "temperatura"
 }
