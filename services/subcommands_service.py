@@ -96,9 +96,9 @@ class SubcommandsService:
     async def handle_temperatura(self, ctx, *args):
         async def inner(ctx, *args):
             ciudades = {
-                "🇪🇸 España - Huelva": (37.27, -6.94),
                 "🇦🇷 Argentina - Buenos Aires": (-34.61, -58.38),
                 "🇧🇷 Brasil - São Paulo": (-23.55, -46.63),
+                "🇪🇸 España - Huelva": (37.27, -6.94),
                 "🇲🇽 México - CDMX": (19.43, -99.13),
                 "🇲🇽 México - Sinaloa": (24.80, -107.39)
             }
