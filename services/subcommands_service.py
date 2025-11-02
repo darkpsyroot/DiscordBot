@@ -92,6 +92,7 @@ class SubcommandsService:
         await self.error_handler.wrap(inner, ctx, *args)
     
     # ---------------- Temperatura Handler ----------------
+        
     async def handle_temperatura(self, ctx, *args):
         async def inner(ctx, *args):
             ciudades = {
@@ -111,14 +112,18 @@ class SubcommandsService:
                         async with session.get(url, params={
                             "latitude": lat,
                             "longitude": lon,
-                            "current_weather": True
+                            "current_weather": "true"  # 🔥 CORREGIDO: string, no boolean
                         }) as resp:
                             if resp.status == 200:
                                 data = await resp.json()
-                                temp = data["current_weather"]["temperature"]
-                                resultados.append(f"{nombre}: **{temp}°C** 🌡️")
+                                weather = data.get("current_weather")
+                                if weather and "temperature" in weather:
+                                    temp = weather["temperature"]
+                                    resultados.append(f"{nombre}: **{temp}°C** 🌡️")
+                                else:
+                                    resultados.append(f"{nombre}: ⚠️ Sin datos de temperatura")
                             else:
-                                resultados.append(f"{nombre}: ⚠️ Error al obtener datos")
+                                resultados.append(f"{nombre}: ⚠️ Error {resp.status} al obtener datos")
                     except Exception as e:
                         resultados.append(f"{nombre}: ⚠️ Error ({e})")
 
