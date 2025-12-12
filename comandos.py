@@ -27,5 +27,6 @@ COMMANDS = {
     "comandos_lista": "comandos",
     "horarios": "horarios",
     "temperatura": "temperatura",
-    "white1": "onlygrr"
+    "white1": "onlygrr",
+    "pan1": "tiburoncin",
 }

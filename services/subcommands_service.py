@@ -8,6 +8,7 @@ from cogs.video.video import Video
 from cogs.audio.audio import Audio
 from cogs.horarios import HorariosHelper 
 from cogs.fun.white import White
+from cogs.fun.pan import Pan
 from cogs.comandos.commands_renderer import CommandsRenderer
 #from services.commands_service import CommandsService
 from comandos import COMMANDS
@@ -19,6 +20,7 @@ class SubcommandsService:
         self.video_cog = Video(cog.bot)
         self.audio_cog = Audio(cog.bot)
         self.white_cog = White(cog.bot)
+        self.pan_cog = Pan(cog.bot)
         #self.horarios_cog = HorariosHelper(cog.bot)
         self.youtube_service = YouTubeService()
         #self.commands_service = CommandsService(cog.bot)
@@ -36,6 +38,7 @@ class SubcommandsService:
             "youtube": self.handle_youtube,
             "lista": self.handle_comandos,
             "white": self.handle_white,
+            "pan": self.handle_pan,
             COMMANDS["horarios"]: self.handle_horarios,
             COMMANDS["temperatura"]: self.handle_temperatura
 
@@ -86,6 +89,14 @@ class SubcommandsService:
 
         subcommand2 = args[0]
         await self.error_handler.wrap(self.white_cog.handle, ctx, subcommand2)
+    # ---------------- Pan Handler ----------------
+    async def handle_pan(self, ctx, *args):
+        if not args:
+            await ctx.send(f"❌ Uso: `!<furina|mavuika> pan {COMMANDS['pan1']}`")
+            return
+
+        subcommand2 = args[0]
+        await self.error_handler.wrap(self.pan_cog.handle, ctx, subcommand2)
     # ---------------- Horarios Handler ----------------
     async def handle_horarios(self, ctx, *args):
         async def inner(ctx, *args):
