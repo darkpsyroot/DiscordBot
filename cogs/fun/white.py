@@ -30,7 +30,7 @@ class White(commands.Cog):
         await self.media_service.enviar_foto_y_audio(
             ctx,
             "assets/imagenes/grr.jpeg",
-            "assets/audio/onlygrr.mp4"
+            "assets/audio/onlygrr.mp3"
         )
 
 async def setup(bot):
