@@ -26,5 +26,6 @@ COMMANDS = {
     "startup_bot": "oncommands",
     "comandos_lista": "comandos",
     "horarios": "horarios",
-    "temperatura": "temperatura"
+    "temperatura": "temperatura",
+    "white1": "onlygrr"
 }
